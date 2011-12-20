@@ -1,0 +1,10 @@
+title: Sample
+subtitle: Sample subtitle
+content:
+  - section: "1. Section"
+    items:
+      - heading: "1.1 Heading"
+        items:
+          - name: Age categorization by Census region
+            description:
+            content: agecat

@@ -1,0 +1,1 @@
+{||rownames||: [||19-29||,||30-34||,||35+||], ||colnames||: [||NE||,||N Cntrl||,||South||,||West||], ||values||: [[46,162,139,160], [83,92,68,73], [37,30,43,23]], ||title||: [||||, ||Census Region||], ||sortby||: ||agecat||, ||type||: ||tab2||, ||statistics||: {||type||: ||||, ||result||: ||||}}, 

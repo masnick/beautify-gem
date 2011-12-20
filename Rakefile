@@ -16,11 +16,12 @@ Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "beautify"
   gem.homepage = "http://github.com/masnick/beautify"
-  gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.license = "All rights reserved. (C) Duke University 2011."
+  gem.summary = %Q{Make beautiful tables from Stata.}
+  gem.description = %Q{This gem makes it easy to get pretty output from commands like tab, tab2, summarize, etc.}
   gem.email = "max@masnick.me"
   gem.authors = ["Max Masnick"]
+  gem.executables = ['beautify']
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
