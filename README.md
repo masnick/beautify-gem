@@ -13,11 +13,11 @@ tables from [Stata].
 
 It can take something like this:
 
-<img src="http://cl.ly/2y3D0r1t0A2x2j3L1U3J/content">
+<img src="http://dl.dropbox.com/u/634/beautify-gem_screenshots/stata.png">
 
 And turn it into something like this:
 
-<img src="http://cl.ly/2y2J3C1134242A3B2o2F/content">
+<img src="http://dl.dropbox.com/u/634/beautify-gem_screenshots/tab2out.png">
 
 It keeps your Stata code nice and clean:
 
@@ -60,7 +60,7 @@ Equivalent to Stata's `tabulate oneway` command.
 
 `tab1out agecat, l("agecat")` creates:
 
-<img src="http://cl.ly/0b0H2e3H1N0B1M0Z231X/content">
+<img src="http://dl.dropbox.com/u/634/beautify-gem_screenshots/tab1out.png">
 
 tab2out
 -------
@@ -69,7 +69,7 @@ Equivalent to Stata's `tabulate twoway` command.
 
 `tab2out agecat, l("agecat_region")` creates:
 
-<img src="http://cl.ly/2y2J3C1134242A3B2o2F/content">
+<img src="http://dl.dropbox.com/u/634/beautify-gem_screenshots/tab2out.png">
 
 
 floatsummary
@@ -80,7 +80,7 @@ by the `byvariable`.
 
 `floatsummary tempjan, l("tempjan")` creates:
 
-<img src="http://cl.ly/3b0U1g1j053k0e0r142b/content">
+<img src="http://dl.dropbox.com/u/634/beautify-gem_screenshots/floatsummary.png">
 
 
 tabmultout
@@ -91,7 +91,7 @@ compact tables of summary statistics and statistical significance.
 
 `tabmultout temp*, l("mult")` creates:
 
-<img src="http://cl.ly/0g2x3T1w3e114110170e/content">
+<img src="http://dl.dropbox.com/u/634/beautify-gem_screenshots/tabmultout.png">
 
 How to use
 ==========
