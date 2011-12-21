@@ -19,8 +19,12 @@ And turn it into something like this:
 
 <img src="http://dl.dropbox.com/u/634/beautify-gem_screenshots/tab2out.png">
 
-It keeps your Stata code nice and clean:
+Features
+--------
 
+- **beautify** keeps your Stata code nice and clean:
+
+```
     webuse citytemp2, clear
 
     // Beautify setup
@@ -32,9 +36,15 @@ It keeps your Stata code nice and clean:
 
     // Beautify output
     shell beautify stata --data output.txt --template template.yaml --output ./
+```
 
-Beautify is smart enough to use the variable and value labels in your
-dataset so you only have to label your data once.
+- **beautify** is smart enough to use the variable and value labels in
+  your dataset so you only have to label your data once.
+- The HTML output from **beautify** is nicely formatted and properly
+  paged for printing.
+
+Technology
+----------
 
 It relies on the following technology:
 
