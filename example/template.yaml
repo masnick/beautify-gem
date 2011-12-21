@@ -1,10 +1,19 @@
-title: Sample
+title: Beautify example
 subtitle: Sample subtitle
 content:
   - section: "1. Section"
     items:
       - heading: "1.1 Heading"
         items:
-          - name: Age categorization by Census region
+          - name: Age categorization
             description:
             content: agecat
+          - name: Age categorization by Census region
+            description:
+            content: agecat_region
+          - name: Summary of January temperatures by region
+            description:
+            content: tempjan
+          - name: Multitable example
+            description: Currently this is limited to two columns
+            content: mult

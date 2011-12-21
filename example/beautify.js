@@ -8,7 +8,6 @@ $(document).ready(function(){
 $('.block').addClass('not-in-page');
 
 var counter = 1;
-var maxheight = 720;
 while(true) {
   // Add page counter div
   $('#pages').append('<div class="page" id="page_'+counter+'"><div class="page-number">Page '+counter+'</div></div>');

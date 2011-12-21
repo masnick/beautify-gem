@@ -23,9 +23,10 @@ module Beautify
                                   |___/ 
 
   Usage:
-     beautify stata --data /path/to/stata/output.txt       \\
-                    --template /path/to/template.yml       \\
-                    --output /path/to/desired/output/folder
+     beautify stata --data /path/to/stata/output.txt        \\
+                    --template /path/to/template.yml        \\
+                    --output /path/to/desired/output/folder \\
+                   [--landscape]
 
    -OR-
 
@@ -69,6 +70,7 @@ EOF
               opt :data, "Path to Stata output file.", :type => :string
               opt :template, "Path to template file.", :type => :string
               opt :output, "Path to save output.", :type => :string
+              opt :landscape, "Landscape orientation of output"
             end
 
             # Validation

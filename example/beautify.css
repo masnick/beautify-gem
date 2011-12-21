@@ -44,14 +44,9 @@ p {
 font-size: 10pt;  
 }
 
-#wrapper, #pages {
-  width: 960px;
-}
-
 .spacer {
   color: #ccc;
   font-size: 12pt;
-  width: 960px;
   text-align: center;
   margin: 1.5em 0 1.5em 0;
 }
@@ -68,7 +63,6 @@ table
 font-weight: normal;
 font-size: 11px;
 color: #000;
-width: 960px;
 background-color: #fff;
 border: 0px;
 border-collapse: collapse;

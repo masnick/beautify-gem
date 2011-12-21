@@ -6,8 +6,6 @@ require 'psych'
 module Beautify
   class Integer
     def self.percentage(value,total)
-      pp value
-      pp total
       ((value / total.to_f) * 1000).round/10.0
     end
   end
@@ -160,7 +158,6 @@ module Beautify
             table['values'].each_with_index do |value, i|
               out << "\t<tr class=\"#{i % 2 == 0 ? 'even': ''}\">\n\t\t<th class=\"sidehead\">#{table['rownames'][i]}</th>\n"
               rowdata = value.values[0]
-              pp rowdata
               case value.keys[0]
               when "binary"
                 for j in (0...table['colnames'].length)
@@ -223,18 +220,37 @@ module Beautify
 
         statistics_css = (template_data['statistics'] ? "": ".statistics{ display: none; }")
 
+        if options[:landscape] == true
+          orientation_css = <<-EOF
+            #wrapper, #pages, .spacer, table {
+              width: 960px;
+            }
+          EOF
+          orientation_js = %Q[var maxheight = 720;]
+        else
+          orientation_css = <<-EOF
+            #wrapper, #pages, .spacer, table {
+              width: 720px;
+            }
+          EOF
+          orientation_js = %Q[var maxheight = 960;]
+        end
+
+
         out = <<-EOF
         <html>
         <head>
         <link rel="stylesheet" type="text/css" href="beautify.css" />
         <link href='http://fonts.googleapis.com/css?family=Droid+Serif:regular,bold' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'>
-
-
         <script src="jquery.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+          #{orientation_js}
+        </script>
         <script src="beautify.js" type='text/javascript'></script>
         <style>
           #{statistics_css }
+          #{orientation_css}
         </style>
         </head>
         <body>

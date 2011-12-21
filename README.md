@@ -1,15 +1,11 @@
-         
-
-
+                                                    
              _                      _   _  __       
             | |__   ___  __ _ _   _| |_(_)/ _|_   _ 
             | '_ \ / _ \/ _` | | | | __| | |_| | | |
             | |_) |  __/ (_| | |_| | |_| |  _| |_| |
             |_.__/ \___|\__,_|\__,_|\__|_|_|  \__, |
                                               |___/ 
-
-
-
+                                                    
 **beautify** is a Ruby helper that makes it easy to export attractive
 tables from [Stata].
 
@@ -17,11 +13,28 @@ tables from [Stata].
 
 It can take something like this:
 
-![Stata](http://cl.ly/2y3D0r1t0A2x2j3L1U3J/content)
+<img src="http://cl.ly/2y3D0r1t0A2x2j3L1U3J/content">
 
 And turn it into something like this:
 
-![Beautify](http://cl.ly/3G2j3G292f2l2s3Z160B/content)
+<img src="http://cl.ly/2y2J3C1134242A3B2o2F/content">
+
+It keeps your Stata code nice and clean:
+
+    webuse citytemp2, clear
+
+    // Beautify setup
+    do beautify.do
+    beautify_init, filename("output.txt") byvariable("region")
+
+    // Make some pretty tables...
+    tab2out agecat, l("agecat")
+
+    // Beautify output
+    shell beautify stata --data output.txt --template template.yaml --output ./
+
+Beautify is smart enough to use the variable and value labels in your
+dataset so you only have to label your data once.
 
 It relies on the following technology:
 
@@ -35,13 +48,50 @@ It relies on the following technology:
 [rubygems]: http://rubygems.org/pages/download
 [bundler]: http://gembundler.com/
 
+
+
 Available commands
 ==================
 
-- tabmultout
-- tab2out
-- tab1out
-- floatsummary
+tab1out
+-------
+
+Equivalent to Stata's `tabulate oneway` command.
+
+`tab1out agecat, l("agecat")` creates:
+
+<img src="http://cl.ly/0b0H2e3H1N0B1M0Z231X/content">
+
+tab2out
+-------
+
+Equivalent to Stata's `tabulate twoway` command.
+
+`tab2out agecat, l("agecat_region")` creates:
+
+<img src="http://cl.ly/2y2J3C1134242A3B2o2F/content">
+
+
+floatsummary
+------------
+
+Equivalent to Stata's `summarize` command. Table columns are grouped
+by the `byvariable`.
+
+`floatsummary tempjan, l("tempjan")` creates:
+
+<img src="http://cl.ly/3b0U1g1j053k0e0r142b/content">
+
+
+tabmultout
+----------
+
+A multivariable version of the `floatsummary` command for creating
+compact tables of summary statistics and statistical significance.
+
+`tabmultout temp*, l("mult")` creates:
+
+<img src="http://cl.ly/0g2x3T1w3e114110170e/content">
 
 How to use
 ==========
@@ -49,7 +99,7 @@ How to use
 You should already have a Stata `.do` file that's running some
 commands with output you want to export into a prettier format.
 
-Step 0: Install `beautify`
+Step 0: Install beautify
 --------------------------
 
 `beautify` is not currently on rubygems, so you'll need manually
@@ -78,7 +128,7 @@ line:
 This will save a file named `beautify.do` in the output directory you
 specify.
 
-Step 2: Modifying your `.do` file
+Step 2: Modifying your .do file
 ---------------------------------
 
 You will need to add the following to the top of your `.do` file:
@@ -102,7 +152,7 @@ If you use [rbenv], use the following instead:
 
 [rbenv]: https://github.com/sstephenson/rbenv
 
-Step 3: Setting up a `template.yml` file
+Step 3: Setting up a template.yml file
 ----------------------------------------
 
 `beautify` uses a [YAML] template file to make the pretty version of

@@ -3,23 +3,48 @@
         <link rel="stylesheet" type="text/css" href="beautify.css" />
         <link href='http://fonts.googleapis.com/css?family=Droid+Serif:regular,bold' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold' rel='stylesheet' type='text/css'>
-
-
         <script src="jquery.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+          var maxheight = 960;
+        </script>
         <script src="beautify.js" type='text/javascript'></script>
         <style>
           .statistics{ display: none; }
+                      #wrapper, #pages, .spacer, table {
+              width: 720px;
+            }
+
         </style>
         </head>
         <body>
         <div id="pages"></div>
         <div id="wrapper">
 <div class="block">
-	 <h1 id="title">Sample
+	 <h1 id="title">Beautify example
 		<div class="subtitle">Sample subtitle</div>
 	</1>
 	<h2>1. Section</h2>
 	<h3>1.1 Heading</h3>
+	<h4>Age categorization</h4>
+	<table>
+	<tr class="tophead"><th></th><th>% (N)</th></tr>
+	<tr class="even">
+		<th class="sidehead">19-29</th>
+<td>53.03 (507)</td>
+	</tr>
+	<tr class="">
+		<th class="sidehead">30-34</th>
+<td>33.05 (316)</td>
+	</tr>
+	<tr class="even">
+		<th class="sidehead">35+</th>
+<td>13.91 (133)</td>
+	</tr>
+</table>
+
+	<div class="spacer">***</div>
+</div>
+<div class="block">
 	<h4>Age categorization by Census region</h4>
 	<table>
 <!--	<tr class="tophead"><th></th><th colspan="4">Census Region</th></tr>-->
@@ -49,6 +74,69 @@
 		<td>26.15% (250)</td>
 		<td>26.78% (256)</td>
 		<td class="rowtotal">956</td>	</tr>
+</table>
+
+	<div class="spacer">***</div>
+</div>
+<div class="block">
+	<h4>Summary of January temperatures by region</h4>
+	<table>
+	<tr class="tophead"><th></th><th>NE</th><th>N Cntrl</th><th>South</th><th>West</th><th>Total</th></tr>
+	<tr class="even">
+		<th>N</th>
+		<td>164</td>
+		<td>284</td>
+		<td>250</td>
+		<td>256</td>
+		<td>954</td>
+	</tr>
+	<tr>
+		<th>Mean (SD)</th>
+		<td>27.89 (3.54)</td>
+		<td>21.69 (5.73)</td>
+		<td>46.15 (10.39)</td>
+		<td>46.23 (11.25)</td>
+		<td>35.75 (14.19)</td>
+	</tr>
+	<tr class="even">
+		<th>Median</th>
+		<td>29.45</td>
+		<td>22.4</td>
+		<td>44.0</td>
+		<td>49.0</td>
+		<td>31.3</td>
+	</tr>
+	<tr>
+		<th>Range</th>
+		<td>[16.6, 31.8]</td>
+		<td>[2.2, 32.6]</td>
+		<td>[28.9, 68.0]</td>
+		<td>[13.0, 72.6]</td>
+		<td>[2.2, 72.6]</td>
+	</tr>
+</table>
+
+	<div class="spacer">***</div>
+</div>
+<div class="block">
+	<h4>Multitable example</h4>
+	<p>Currently this is limited to two columns</p>
+	<table>
+	<tr class="tophead"><th></th><th>NE</th><th>N Cntrl</th><th>Total</th><th>P value</th></tr>
+	<tr class="even">
+		<th class="sidehead">Average January temperature</th>
+		<td>Mean: 27.89<br>(SD: 3.54; N: 164)</td>
+		<td>Mean: 21.69<br>(SD: 5.73; N: 284)</td>
+		<td class="rowtotal">Mean: 23.96<br>(SD: 5.85; N: 448)</td>
+		<td><b>< 0.0001</b></td>
+	</tr>
+	<tr class="">
+		<th class="sidehead">Average July temperature</th>
+		<td>Mean: 73.35<br>(SD: 2.36; N: 164)</td>
+		<td>Mean: 73.47<br>(SD: 3.1; N: 284)</td>
+		<td class="rowtotal">Mean: 73.42<br>(SD: 2.85; N: 448)</td>
+		<td>0.6755</td>
+	</tr>
 </table>
 
 	<div class="spacer">***</div>
