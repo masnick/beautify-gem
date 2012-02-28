@@ -133,8 +133,8 @@ Then run the following at the command prompt:
 
     gem install /path/to/beautify-X.X.X.gem
 
-This should install the `beautify` executable. You can check to see
-if this worked with the `which beautify` command.
+If you're on Windows and get an error while installing Psych, you should
+[follow these instructions](https://github.com/masnick/beautify-gem/wiki/Installing-psych-on-Windows).
 
 [dl]: https://github.com/masnick/beautify-gem/downloads
 
