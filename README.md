@@ -1,11 +1,11 @@
-                                                    
-             _                      _   _  __       
-            | |__   ___  __ _ _   _| |_(_)/ _|_   _ 
+
+             _                      _   _  __
+            | |__   ___  __ _ _   _| |_(_)/ _|_   _
             | '_ \ / _ \/ _` | | | | __| | |_| | | |
             | |_) |  __/ (_| | |_| | |_| |  _| |_| |
             |_.__/ \___|\__,_|\__,_|\__|_|_|  \__, |
-                                              |___/ 
-                                                    
+                                              |___/
+
 **beautify** is a Ruby helper that makes it easy to export attractive
 tables from [Stata].
 
@@ -112,10 +112,22 @@ commands with output you want to export into a prettier format.
 Step 0: Install beautify
 --------------------------
 
+Make sure you have Ruby first. You can type `ruby -v` at the command line
+to check if it's installed. You should see something like:
+
+    ruby 1.9.3p0 (2011-10-30 revision 33570) [x86_64-darwin11.2.0]
+
+You'll need at least v1.9.2.
+
+If you don't have Ruby installed or your version is too old, there is
+an [installer for Windows](http://rubyinstaller.org/). On Mac, the best
+thing to do is [use rbenv](https://github.com/masnick/beautify-gem/wiki/Installing-Ruby-on-Mac).
+
 `beautify` is not currently on rubygems, so you'll need manually
 download and install it.
 
-First, download the most recent `.gem` from [github][dl].
+First, download the most recent `.gem` from [github][dl]. It's the file called
+`beautify-x.x.x.gem` under "Download Packages".
 
 Then run the following at the command prompt:
 
@@ -147,7 +159,7 @@ You will need to add the following to the top of your `.do` file:
     beautify_init, filename("output.txt") byvariable("group")
 
 You can change `group` to any integer variable. This is the second
-variable that `beautify` will use in two-way tables (e.g. `tab2out`). 
+variable that `beautify` will use in two-way tables (e.g. `tab2out`).
 
 Then, add the following to the end of your `.do` file:
 
