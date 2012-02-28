@@ -7,7 +7,7 @@ prog beautify_init
   }
   global BEAUTIFY_OUTFILE `"`filename'"' // " syntax highlight fix
   shell rm -rf "$BEAUTIFY_OUTFILE"
-  
+
   if "`byvariable'" != "" {
     global BEAUTIFY_BYVAR "`byvariable'"
   }
@@ -52,7 +52,7 @@ prog def tabmultout
     local nvar2 `r(r)'
     tabstat one, by(`by') s(n) save
     forvalues i = 1/`nvar2' {
-      local colnames `colnames'||`r(name`i')'||, 
+      local colnames `colnames'||`r(name`i')'||,
       local byvarname_`i' `r(name`i')'
     }
   }
@@ -83,7 +83,7 @@ prog def tabmultout
       local outtotal
 
       tab `x' `by', matcell(values)
-      matlist values 
+      matlist values
 
       local counter 1
       foreach level_by of local levels_by {
@@ -184,7 +184,7 @@ prog def tabmultout
   //    binary: {count: [by1, by2], total: [by1, by2], p: 0.0001}
   //     cont.: {mean: [by1, by2, ..., total], sd: [by1, by2, ..., total], n: [by1, by2, ..., total], p: 0.0001}
   local output {||rownames||: `rownames', ||colnames||: `colnames', ||values||: [`outvalues'], ||sortby||: ||`label'||, ||type||: ||multi_tab||}
-  
+
 di "`output'"
 
   file write outputfile `"`output', "' // syntax highlighting fix "
@@ -228,7 +228,7 @@ program define tab2out
   // Get row names
   tabstat one, by(`varlist') s(n) save
   forvalues i = 1/`nvar1' {
-    local rownames `rownames'||`r(name`i')'||, 
+    local rownames `rownames'||`r(name`i')'||,
   }
   lstrfun row_len_var, strlen(`"`macval(rownames)'"') //" // syntax highlight fix
   local row_len_var = `row_len_var' - 1
@@ -238,7 +238,7 @@ program define tab2out
   // Get column names
   tabstat one, by(`by') s(n) save
   forvalues i = 1/`nvar2' {
-    local colnames `colnames'||`r(name`i')'||, 
+    local colnames `colnames'||`r(name`i')'||,
   }
   lstrfun col_len_var, strlen(`"`macval(colnames)'"') //" // syntax highlight fix
   local col_len_var = `col_len_var' - 1
@@ -251,10 +251,10 @@ program define tab2out
     local tmp ""
     forvalues j = 1/`nvar2' {
       local val = values[`i',`j']
-      local tmp `tmp'`val', 
+      local tmp `tmp'`val',
     }
     local tmp = substr("`tmp'", 1, length("`tmp'")-1)
-    local values `values'`tmp'], 
+    local values `values'`tmp'],
   }
   local values = substr("`values'", 1, length("`values'")-1)
 
@@ -288,7 +288,7 @@ program define tab2out
 
   file close outputfile
   }
-  
+
 end
 
 
@@ -313,42 +313,42 @@ program define tab1out
 
   cap drop one
   gen one = 1
-  
+
   tabstat one, by(`varlist') s(n) save
   forvalues i = 1/`nvar1' {
-    local rownames `rownames'||`r(name`i')'||, 
+    local rownames `rownames'||`r(name`i')'||,
   }
   local rownames = substr("`rownames'", 1, length("`rownames'") - 1)
   local rownames [`rownames']
-  
-  
+
+
   mat l values
-  
+
   local values [
   forvalues i = 1/`nvar1' {
     local tmp = values[`i',1]
-    local values `values'`tmp', 
+    local values `values'`tmp',
   }
   local values = substr("`values'", 1, length("`values'")-1)
   local values `values']
-  
+
   local output {||rownames||: `rownames', ||values||: `values', ||title||: [||`lab'||], ||sortby||: ||`label'||, ||type||: ||tab1||}
-  
+
 
   file write outputfile `"`output', "' // syntax highlighting fix "
   file close outputfile
   }
 
-  
+
 end
 
 // required:
 which lstrfun
-cap prog drop sumint
-prog sumint
+cap prog drop floatsummary
+prog floatsummary
   syntax varlist(max=1) [if], Label(str) [by(varlist max=1)]
   beautify_check_init
-  
+
 if "`by'" == "" & "$BEAUTIFY_BYVAR" == "" {
     di "You must include a 'by' option or set the tablemaker byvariable in tablemaker_init."
     error 999
@@ -359,8 +359,8 @@ if "`by'" == "" & "$BEAUTIFY_BYVAR" == "" {
 
   qui {
   cap file close outputfile
-  
-  
+
+
   cap drop one
   gen one = 1
 
@@ -371,15 +371,15 @@ if "`by'" == "" & "$BEAUTIFY_BYVAR" == "" {
 
   tabstat one, by(`by') s(n) save
   forvalues i = 1/`nvar2' {
-    local colnames `colnames'||`r(name`i')'||, 
+    local colnames `colnames'||`r(name`i')'||,
   }
   lstrfun col_len_var, strlen(`"`macval(colnames)'"') //" // syntax highlight fix
   local col_len_var = `col_len_var' - 1
   lstrfun colnames, substr(`"`macval(colnames)'"', 1, `macval(col_len_var)') //" // syntax highlight fix
   local colnames [`colnames',||Total||]
-  
 
-  local lab2: var l `by'  
+
+  local lab2: var l `by'
 
     if "`if'" == "" {
       local if2 "if"
@@ -401,7 +401,7 @@ if "`by'" == "" & "$BEAUTIFY_BYVAR" == "" {
         local byquotechar `""'
     }
 
-    local values [  
+    local values [
     levelsof `by', clean
     local byvals = r(levels)
     }
@@ -442,9 +442,9 @@ if "`by'" == "" & "$BEAUTIFY_BYVAR" == "" {
       local stattype Two-sample t test with equal variances
       local statresult `r(p)'
     }
-    
+
     local output {||colnames||: `colnames', ||values||: `values', ||title||: [||`lab'||, ||`lab2'||], ||sortby||: ||`label'||, ||type||: ||sum||, ||statistics||: {||type||: ||`stattype'||, ||result||: ||`statresult'||}}
-    
+
     file write outputfile `"`output', "' // syntax highlighting fix "
 
     file close outputfile
